@@ -65,9 +65,9 @@ cd "/cygdrive/c/Program Files (x86)/DAEMON Tools Lite"
 cd /home/vagrant
 
 # Ruby 1.9
-#wget http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe -O rubyinstaller.exe
+wget http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe -O rubyinstaller.exe
 # Ruby 1.8
-wget http://files.rubyforge.vm.bytemark.co.uk/rubyinstaller/rubyinstaller-1.8.7-p334.exe -O rubyinstaller.exe
+#wget http://files.rubyforge.vm.bytemark.co.uk/rubyinstaller/rubyinstaller-1.8.7-p334.exe -O rubyinstaller.exe
 
 chmod +x rubyinstaller.exe
 ./rubyinstaller.exe /verysilent /dir="C:\ruby" /tasks="assocfiles,modpath" /SUPPRESSMSGBOXES
@@ -91,16 +91,13 @@ gem.bat install puppet  --no-rdoc --no-ri --verbose
 
 # Installing chef required gems on windows
 # For ruby 1.8
-gem.bat install win32-open3 ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
+#gem.bat install win32-open3 ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
 # For ruby 1.9
-#gem.bat install win32-open3 rdp-ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
+gem.bat install win32-open3 rdp-ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
 
 # Install chef
 gem.bat install ohai --no-rdoc --no-ri --verbose
 gem.bat install chef  --no-rdoc --no-ri --verbose
-
-# Currently 1.9 ruby + chef 10 doesn't seem to be able to 
-#http://stackoverflow.com/questions/4819807/ohai-fails-to-determine-os-version-in-cygwin
 
 #Making aliases
 cat <<EOF > /home/vagrant/.bash_profile
