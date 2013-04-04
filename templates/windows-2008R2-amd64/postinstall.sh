@@ -74,7 +74,7 @@ chmod +x rubyinstaller.exe
 
 # Now add it to the path cmd, and cygwin path
 # http://serverfault.com/questions/63017/how-do-i-modify-the-system-path-in-windows-2003-windows-2008-using-a-script
-/cygdrive/c/Windows/System32/setx.exe  PATH "c:\windows\system32;c:\ruby\bin" /M
+/cygdrive/c/Windows/System32/setx.exe  PATH "c:\windows\system32;c:\ruby\bin;C:\Windows\System32\WindowsPowerShell\v1.0;" /M
 export PATH=$PATH:/cygdrive/c/ruby/bin
 
 # Install Ruby dev kit (native extensions)
