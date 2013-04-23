@@ -1,6 +1,6 @@
 Veewee::Definition.declare({
   :cpu_count => '1', :memory_size=> '384', 
-  :disk_size => '10140', :disk_format => 'VDI', :hostiocache => 'off',
+  :disk_size => '20140', :disk_format => 'VDI', :hostiocache => 'off',
   :os_type_id => 'Windows2008_64',
   :iso_file => "7601.17514.101119-1850_x64fre_server_eval_en-us-GRMSXEVAL_EN_DVD.iso",
   :iso_src => "",

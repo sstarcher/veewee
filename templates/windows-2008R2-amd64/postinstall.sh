@@ -65,16 +65,16 @@ cd "/cygdrive/c/Program Files (x86)/DAEMON Tools Lite"
 cd /home/vagrant
 
 # Ruby 1.9
-wget http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe -O rubyinstaller.exe
+#wget http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe -O rubyinstaller.exe
 # Ruby 1.8
-#wget http://files.rubyforge.vm.bytemark.co.uk/rubyinstaller/rubyinstaller-1.8.7-p334.exe -O rubyinstaller.exe
+wget http://files.rubyforge.vm.bytemark.co.uk/rubyinstaller/rubyinstaller-1.8.7-p334.exe -O rubyinstaller.exe
 
 chmod +x rubyinstaller.exe
 ./rubyinstaller.exe /verysilent /dir="C:\ruby" /tasks="assocfiles,modpath" /SUPPRESSMSGBOXES
 
 # Now add it to the path cmd, and cygwin path
 # http://serverfault.com/questions/63017/how-do-i-modify-the-system-path-in-windows-2003-windows-2008-using-a-script
-/cygdrive/c/Windows/System32/setx.exe  PATH "c:\windows\system32;c:\ruby\bin;C:\Windows\System32\WindowsPowerShell\v1.0;" /M
+/cygdrive/c/Windows/System32/setx.exe  PATH "c:\windows\system32;c:\ruby\bin;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\wbem" /M
 export PATH=$PATH:/cygdrive/c/ruby/bin
 
 # Install Ruby dev kit (native extensions)
@@ -88,12 +88,17 @@ ruby dk.rb install
 
 # Installing puppet
 gem.bat install puppet  --no-rdoc --no-ri --verbose
+mkdir -p /cygdrive/c/ProgramData/PuppetLabs/puppet
+#These Gems are needed by puppet 3.1
+gem.bat install  sys-admin win32-service  win32-taskscheduler win32-security --no-rdoc --no-ri --verbose
+gem.bat install win32-process -v 0.6.5 --no-rdoc --no-ri --verbose
+gem.bat install win32-dir -v 0.3.7 --no-rdoc --no-ri --verbose
 
 # Installing chef required gems on windows
 # For ruby 1.8
-#gem.bat install win32-open3 ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
+gem.bat install win32-open3 ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
 # For ruby 1.9
-gem.bat install win32-open3 rdp-ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
+#gem.bat install win32-open3 rdp-ruby-wmi windows-api windows-pr --no-rdoc --no-ri --verbose
 
 # Install chef
 gem.bat install ohai --no-rdoc --no-ri --verbose
